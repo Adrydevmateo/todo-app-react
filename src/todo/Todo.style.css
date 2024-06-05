@@ -1,0 +1,11 @@
+.todo-comp {}
+
+.todo-comp>.checkbox-container {}
+
+.todo-comp>.checkbox-container>.checkbox {}
+
+.todo-comp>.txt-container {}
+
+.todo-comp>.delete-container {}
+
+.todo-comp>.delete-container>img {}
