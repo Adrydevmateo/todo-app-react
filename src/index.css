@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root {
- color-scheme: light dark;
-
  --Bright-Blue: hsl(220, 98%, 61%);
  --Check-Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
@@ -29,45 +27,5 @@ html {
  scroll-behavior: smooth;
  font-optical-sizing: auto;
 }
-
-body {
- color: light-dark(black, white);
- background-color: light-dark(white, black);
- margin: 0;
- min-height: 100vh;
-}
-
-#banner {}
-
-#banner>img {}
-
-#bg-mobile-dark,
-#bg-desktop-dark {
- opacity: 0;
-}
-
-main {}
-
-main>.header {}
-
-main>.header h1 {}
-
-main>.header img {}
-
-#form {}
-
-#create-todo-input {}
-
-main>.todo-list {}
-
-main>.todo-list>.todo-container {}
-
-main>.todo-list>.todo-list-footer {}
-
-main>.todo-list>.todo-list-footer strong {}
-
-main>.controllers {}
-
-main>.controllers>button {}
 
 @media screen and (min-width: 1440px) {}

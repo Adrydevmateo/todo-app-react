@@ -7,11 +7,68 @@
  <meta name="attribution" content="https://www.frontendmentor.io?ref=challenge">
  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
  <title>TODO App</title>
+
+ <style>
+  #sortable-list {
+   list-style: none;
+   padding: 0;
+   margin: 0;
+  }
+
+  #sortable-list li {
+   margin: 10px 0;
+   padding: 10px;
+   border: 1px solid #ddd;
+   cursor: grab;
+  }
+
+  #sortable-list li.dragging {
+   opacity: 0.5;
+   cursor: grabbing;
+  }
+ </style>
 </head>
 
 <body>
+ <ul id="sortable-list">
+  <li draggable="true">Item 1</li>
+  <li draggable="true">Item 2</li>
+  <li draggable="true">Item 3</li>
+  <li draggable="true">Item 4</li>
+ </ul>
  <div id="root"></div>
  <script type="module" src="/src/main.tsx"></script>
+ <script>
+  const sortableList = document.getElementById('sortable-list');
+
+  let draggingItem;
+
+  sortableList.addEventListener('dragstart', (event) => {
+   draggingItem = event.target;
+   event.dataTransfer.setData('text/plain', event.target.textContent);
+   event.dataTransfer.effectAllowed = 'move';
+   event.target.classList.add('dragging');
+  });
+
+  sortableList.addEventListener('dragover', (event) => {
+   event.preventDefault();
+   const currentItem = event.target;
+   const isBefore = (event.clientY < currentItem.offsetTop + currentItem.offsetHeight / 2);
+   const nextItem = currentItem.nextElementSibling;
+   if (draggingItem !== currentItem && !currentItem.classList.contains('dragging')) {
+    if (isBefore && nextItem) {
+     sortableList.insertBefore(draggingItem, nextItem);
+    } else {
+     sortableList.insertBefore(draggingItem, currentItem);
+    }
+   }
+  });
+
+  sortableList.addEventListener('dragend', () => {
+   draggingItem.classList.remove('dragging');
+  });
+
+ </script>
 </body>
 
 </html>
