@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root {
- color-scheme: light dark;
-
  --Bright-Blue: hsl(220, 98%, 61%);
  --Check-Background: linear-gradient hsl(192, 100%, 67%) to hsl(280, 87%, 65%);
 
@@ -20,7 +18,9 @@
  --Light-Grayish-Blue-hover: hsl(236, 33%, 92%);
  --Dark-Grayish-Blue: hsl(234, 11%, 52%);
  --Very-Dark-Grayish-Blue: hsl(233, 14%, 35%);
- --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%)
+ --Very-Dark-Grayish-Blue: hsl(237, 14%, 26%);
+
+ --bg-color: var(--Very-Light-Gray);
 }
 
 html {
@@ -30,11 +30,16 @@ html {
  font-optical-sizing: auto;
 }
 
+.color-scheme-dark {
+ --bg-color: var(--Very-Dark-Blue);
+}
+
 body {
- color: light-dark(black, white);
- background-color: light-dark(white, black);
+ color: black;
+ background-color: var(--bg-color);
  margin: 0;
  min-height: 100vh;
+ transition: color .2s ease, background-color .2s ease;
 }
 
 #banner {}
@@ -43,16 +48,42 @@ body {
 
 #bg-mobile-dark,
 #bg-desktop-dark {
- opacity: 0;
+ /* opacity: 0; */
 }
 
 main {}
 
-main>.header {}
+main>.header {
+ position: relative;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 1em;
+}
 
-main>.header h1 {}
+main>.header h1 {
+ margin: 0;
+ padding-top: .23em;
+}
 
-main>.header img {}
+main>.header img {
+ position: absolute;
+ right: 1em;
+ cursor: pointer;
+}
+
+#icon-moon {}
+
+#icon-sun,
+.color-scheme-dark #icon-moon {
+ opacity: 0;
+ pointer-events: none;
+}
+
+.color-scheme-dark #icon-sun {
+ opacity: initial;
+ pointer-events: initial;
+}
 
 #form {}
 

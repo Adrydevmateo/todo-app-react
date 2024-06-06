@@ -8,6 +8,7 @@ import BgDesktopLight from './assets/images/bg-desktop-light.jpg'
 
 import IconSun from './assets/icons/icon-sun.svg'
 import IconMoon from './assets/icons/icon-moon.svg'
+
 import { CreateTodo, DeleteTodo, EditTodo, GetAllTodo } from './todo/Todo'
 import { FormEvent, useEffect, useState } from 'react'
 import { TTodo } from './todo/Todo.types'
@@ -49,6 +50,11 @@ function App() {
   setTodoCollection(() => GetAllTodo())
  }
 
+ const SetColorScheme = (scheme: 'white' | 'dark') => {
+  if (scheme === 'white') document.body.classList.remove('color-scheme-dark')
+  else document.body.classList.add('color-scheme-dark')
+ }
+
  return (
   <>
    <header id='banner'>
@@ -61,8 +67,8 @@ function App() {
    <main>
     <div className="header">
      <h1>TODO</h1>
-     <img id='icon-moon' src={IconMoon} alt="sun icon" />
-     <img id='icon-sun' src={IconSun} alt="sun icon" loading='lazy' />
+     <img id='icon-moon' src={IconMoon} alt="sun icon" onClick={() => SetColorScheme('dark')} />
+     <img id='icon-sun' src={IconSun} alt="sun icon" loading='lazy' onClick={() => SetColorScheme('white')} />
     </div>
 
     <form id="form" onSubmit={HandleFormSubmit}>
