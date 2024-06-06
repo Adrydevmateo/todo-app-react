@@ -1,14 +1,41 @@
 .todo-comp {
  background-color: var(--bg-color);
  border-radius: var(--border-radius);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: .4em 0;
 }
 
-.todo-comp>.checkbox-container {}
+.todo-comp .col-1,
+.todo-comp .col-2 {
+ display: flex;
+ align-items: center;
+}
 
-.todo-comp>.checkbox-container>.checkbox {}
+.todo-comp .col-1 {
+ gap: .6em;
+}
 
-.todo-comp>.txt-container {}
+.todo-comp .checkbox {
+ background-color: red;
+ display: grid;
+ border-radius: 100%;
+}
 
-.todo-comp>.delete-container {}
+.todo-comp.complete .checkbox {
+ background-color: aquamarine;
+}
 
-.todo-comp>.delete-container>img {}
+.todo-comp .checkbox img {
+ padding: 1em;
+ border-radius: 100%;
+}
+
+.todo-comp .col-2 {}
+
+.todo-comp .col-2 button {
+ display: grid;
+}
+
+.todo-comp .col-2 button img {}

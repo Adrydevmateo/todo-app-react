@@ -199,4 +199,8 @@ main>.heading-box img {
   opacity: initial;
   pointer-events: initial;
  }
+
+ main {
+  margin-top: 4em;
+ }
 }

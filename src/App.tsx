@@ -78,7 +78,7 @@ function App() {
     <ol id='todo-list'>
      {todoCollection.map((todo, i) => (
       <li className='todo-list-item' key={i}>
-       <TodoComp txt={todo.txt} OnEditTodo={() => HandleUpdateTodo(todo)} OnDeleteTodo={() => HandleDeleteTodo(todo.id)} />
+       <TodoComp txt={todo.txt} complete={todo.complete} OnEditTodo={() => HandleUpdateTodo(todo)} OnDeleteTodo={() => HandleDeleteTodo(todo.id)} />
       </li>
      ))}
      <li className='todo-list-footer'>
