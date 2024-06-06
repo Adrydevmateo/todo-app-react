@@ -57,7 +57,7 @@ function App() {
 
  return (
   <>
-   <header id='banner'>
+   <header>
     <img id='bg-mobile-light' src={BgMobileLight} alt="light background" width={375} height={200} />
     <img id='bg-mobile-dark' src={BgMobileDark} alt="dark background" width={375} height={200} loading='lazy' />
     <img id='bg-desktop-light' src={BgDesktopLight} alt="light background" width={1440} height={300} />
@@ -65,33 +65,32 @@ function App() {
    </header>
 
    <main>
-    <div className="header">
+    <div className="heading-box">
      <h1>TODO</h1>
      <img id='icon-moon' src={IconMoon} alt="sun icon" onClick={() => SetColorScheme('dark')} />
      <img id='icon-sun' src={IconSun} alt="sun icon" loading='lazy' onClick={() => SetColorScheme('white')} />
     </div>
 
-    <form id="form" onSubmit={HandleFormSubmit}>
-     <input type="text" name="todo" id="create-todo-input" />
+    <form id="main-form" onSubmit={HandleFormSubmit}>
+     <input type="text" name="todo" id="create-todo-input" placeholder='Create a new todo...' />
     </form>
 
-    <ol className='todo-list'>
+    <ol id='todo-list'>
      {todoCollection.map((todo, i) => (
-      <li className='todo-container' key={i}>
-       Complete: {`${todo.complete}`}
+      <li className='todo-list-item' key={i}>
        <TodoComp txt={todo.txt} OnEditTodo={() => HandleUpdateTodo(todo)} OnDeleteTodo={() => HandleDeleteTodo(todo.id)} />
       </li>
      ))}
      <li className='todo-list-footer'>
       <strong>5 items left</strong>
-      <strong>Clear Completed</strong>
+      <button type='button'><b>Clear Completed</b></button>
      </li>
     </ol>
 
     <div className="controllers">
-     <button type="button">All</button>
-     <button type="button">Active</button>
-     <button type="button">Completed</button>
+     <button type="button"><b>All</b></button>
+     <button type="button"><b>Active</b></button>
+     <button type="button"><b>Completed</b></button>
     </div>
    </main>
   </>

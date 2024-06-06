@@ -1,4 +1,7 @@
-.todo-comp {}
+.todo-comp {
+ background-color: var(--bg-color);
+ border-radius: var(--border-radius);
+}
 
 .todo-comp>.checkbox-container {}
 
