@@ -2,7 +2,6 @@ import './Todo.style.css'
 
 import IconCheck from '../assets/icons/icon-check.svg'
 import IconDelete from '../assets/icons/icon-cross.svg'
-import { DeleteTodo, GetAllTodo } from './Todo'
 
 interface TodoCompProps {
  txt: string
