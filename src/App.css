@@ -126,12 +126,17 @@ main>.heading-box img {
 
 .controllers button {
  padding: 1.4em;
- transition: color var(--primary-transition);
+ opacity: .8;
+ transition: color var(--primary-transition), opacity var(--primary-transition);
 }
 
-.controllers button:hover,
+.controllers button:hover {
+ opacity: 1;
+}
+
 .controllers button.active {
  color: var(--Bright-Blue);
+ opacity: 1;
 }
 
 @media screen and (min-width: 375px) {
