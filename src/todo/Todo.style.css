@@ -29,15 +29,15 @@
 }
 
 .todo-comp .checkbox img {
+ opacity: 0;
  padding: .6em;
  border-radius: 100%;
- background-image: var(--Check-Background);
- opacity: 0;
  transition: opacity var(--primary-transition);
 }
 
 .todo-comp.complete .checkbox img {
  opacity: 1;
+ background-image: var(--Check-Background);
 }
 
 .todo-comp .col-2 button {

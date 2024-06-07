@@ -5,7 +5,7 @@ export function CreateTodo(todo: TTodo): number {
  const allTodo = GetAllTodo()
 
  if (allTodo.length) {
-  allTodo.push(todo)
+  allTodo.unshift(todo)
   localStorage['allTodo'] = JSON.stringify(allTodo)
   return 0
  }
