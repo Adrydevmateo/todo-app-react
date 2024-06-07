@@ -9,7 +9,7 @@ import BgDesktopLight from './assets/images/bg-desktop-light.jpg'
 import IconSun from './assets/icons/icon-sun.svg'
 import IconMoon from './assets/icons/icon-moon.svg'
 
-import { CreateTodo, DeleteTodo, EditTodo, GetAllTodo } from './todo/Todo'
+import { CreateTodo, DeleteAllCompletedTodo, DeleteTodo, EditTodo, GetAllTodo } from './todo/Todo'
 import { FormEvent, useEffect, useState } from 'react'
 import { TSortedBy, TTodo } from './todo/Todo.types'
 
@@ -82,6 +82,11 @@ function App() {
   SortingLogic()
  }
 
+ const HandleClearCompleted = () => {
+  DeleteAllCompletedTodo()
+  SortingLogic()
+ }
+
  const SetColorScheme = (scheme: 'white' | 'dark') => {
   if (scheme === 'white') document.body.classList.remove('color-scheme-dark')
   else document.body.classList.add('color-scheme-dark')
@@ -116,7 +121,7 @@ function App() {
      ))}
      <li className='todo-list-footer'>
       <strong>{totalTodoMsg}</strong>
-      <button type='button'><b>Clear Completed</b></button>
+      <button type='button' onClick={() => HandleClearCompleted()}><b>Clear Completed</b></button>
      </li>
     </ol>
 

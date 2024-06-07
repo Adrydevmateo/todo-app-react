@@ -57,3 +57,14 @@ export function DeleteTodo(id: string): number {
 
  return 1
 }
+
+export function DeleteAllCompletedTodo(): number {
+ const allTodo = GetAllTodo()
+
+ if (allTodo.length) {
+  const newAllTodo = allTodo.filter(f => f.complete === false)
+  localStorage['allTodo'] = JSON.stringify(newAllTodo)
+ }
+
+ return 1
+}
