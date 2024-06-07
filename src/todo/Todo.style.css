@@ -5,6 +5,7 @@
  align-items: center;
  justify-content: space-between;
  padding: .8em 0;
+ gap: 1em;
 }
 
 .todo-comp .col-1,
@@ -41,8 +42,14 @@
 }
 
 .todo-comp .col-2 button {
+ opacity: .6;
  display: grid;
  padding-right: .2em;
+ transition: opacity var(--primary-transition);
+}
+
+.todo-comp .col-2 button:hover {
+ opacity: initial;
 }
 
 .todo-comp.complete .txt-container strong {

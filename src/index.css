@@ -27,6 +27,12 @@
  --border-radius: .36em;
 }
 
+*,
+*::before,
+*::after {
+ min-width: 0;
+}
+
 html,
 button,
 input {
@@ -56,4 +62,23 @@ button {
  border: none;
  padding: 0;
  cursor: pointer;
+ min-width: initial;
+}
+
+@media screen and (min-width: 800px) {
+
+ html,
+ button,
+ input {
+  font-size: large;
+ }
+}
+
+@media screen and (min-width: 1200px) {
+
+ html,
+ button,
+ input {
+  font-size: larger;
+ }
 }

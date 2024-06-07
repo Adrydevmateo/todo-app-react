@@ -99,6 +99,8 @@ main>.heading-box img {
 .todo-list-footer {
  display: flex;
  justify-content: space-between;
+ flex-wrap: wrap;
+ gap: 1em;
  background-color: var(--Very-Light-Gray);
  padding: 1.4em 1.4em 1em 1.4em;
  border-radius: var(--border-radius);
@@ -119,6 +121,7 @@ main>.heading-box img {
  display: flex;
  align-items: center;
  justify-content: center;
+ flex-wrap: wrap;
  gap: 1.4em;
  background-color: white;
  border-radius: var(--border-radius);
@@ -138,6 +141,8 @@ main>.heading-box img {
  color: var(--Bright-Blue);
  opacity: 1;
 }
+
+@media screen and (min-width: 300px) {}
 
 @media screen and (min-width: 375px) {
 
