@@ -16,16 +16,32 @@ import { TSortedBy, TTodo } from './todo/Todo.types'
 function App() {
  const [sortedBy, setSortedBy] = useState<TSortedBy>('all')
  const [todoCollection, setTodoCollection] = useState<Array<TTodo>>([])
+ const [totalTodoMsg, setTotalTodoMsg] = useState('Nothing to do')
 
  useEffect(() => {
   const allTodoCollection = GetAllTodo()
-  if (sortedBy === 'all') return setTodoCollection(() => allTodoCollection)
+  if (sortedBy === 'all') {
+   const allTodoCollectionLength = allTodoCollection.length
+   setTotalTodoMsg(() => allTodoCollectionLength ? `${allTodoCollectionLength} tasks` : 'Nothing to do')
+   setTodoCollection(() => allTodoCollection)
+   return
+  }
 
   const incompleteTodoCollection = allTodoCollection.filter(f => f.complete === false)
-  if (sortedBy === 'incomplete') return setTodoCollection(() => incompleteTodoCollection)
+  if (sortedBy === 'incomplete') {
+   const incompleteTodoCollectionLength = incompleteTodoCollection.length
+   setTotalTodoMsg(() => incompleteTodoCollectionLength ? `${incompleteTodoCollectionLength} incomplete` : 'Nothing to do')
+   setTodoCollection(() => incompleteTodoCollection)
+   return
+  }
 
   const completeTodoCollection = allTodoCollection.filter(f => f.complete === true)
-  if (sortedBy === 'complete') return setTodoCollection(() => completeTodoCollection)
+  if (sortedBy === 'complete') {
+   const completeTodoCollectionLength = completeTodoCollection.length
+   setTotalTodoMsg(() => completeTodoCollectionLength ? `${completeTodoCollectionLength} completed` : 'Nothing completed')
+   setTodoCollection(() => completeTodoCollection)
+   return
+  }
  }, [sortedBy])
 
  const HandleSortBy = (sorted: TSortedBy) => {
@@ -94,7 +110,7 @@ function App() {
       </li>
      ))}
      <li className='todo-list-footer'>
-      <strong>5 items left</strong>
+      <strong>{totalTodoMsg}</strong>
       <button type='button'><b>Clear Completed</b></button>
      </li>
     </ol>

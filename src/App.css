@@ -104,6 +104,16 @@ main>.heading-box img {
  border-radius: var(--border-radius);
 }
 
+.todo-list-footer strong,
+.todo-list-footer button {
+ opacity: .6;
+ transition: opacity var(--primary-transition);
+}
+
+.todo-list-footer button:hover {
+ opacity: 1;
+}
+
 .controllers {
  margin-top: .4em;
  display: flex;
@@ -116,6 +126,7 @@ main>.heading-box img {
 
 .controllers button {
  padding: 1.4em;
+ transition: color var(--primary-transition);
 }
 
 .controllers button:hover,

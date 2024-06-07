@@ -20,31 +20,30 @@
 .todo-comp .checkbox {
  display: grid;
  border-radius: 100%;
- border: 1px solid transparent;
- transition: border-color var(--primary-transition-speed) ease;
+ border: 1px solid var(--Light-Grayish-Blue);
+ transition: border-color var(--primary-transition);
 }
 
 .todo-comp .checkbox:hover {
  border-color: var(--Bright-Blue);
 }
 
-.todo-comp.complete .checkbox img {
- background-image: var(--Check-Background);
-}
-
 .todo-comp .checkbox img {
  padding: .6em;
  border-radius: 100%;
+ background-image: var(--Check-Background);
+ opacity: 0;
+ transition: opacity var(--primary-transition);
 }
 
-.todo-comp .col-2 {}
+.todo-comp.complete .checkbox img {
+ opacity: 1;
+}
 
 .todo-comp .col-2 button {
  display: grid;
  padding-right: .2em;
 }
-
-.todo-comp .col-2 button img {}
 
 .todo-comp.complete .txt-container strong {
  text-decoration: line-through;
