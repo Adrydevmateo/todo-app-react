@@ -19,6 +19,10 @@ function App() {
  const [totalTodoMsg, setTotalTodoMsg] = useState('Nothing to do')
 
  useEffect(() => {
+  SortingLogic()
+ }, [sortedBy])
+
+ function SortingLogic() {
   const allTodoCollection = GetAllTodo()
   if (sortedBy === 'all') {
    const allTodoCollectionLength = allTodoCollection.length
@@ -42,7 +46,7 @@ function App() {
    setTodoCollection(() => completeTodoCollection)
    return
   }
- }, [sortedBy])
+ }
 
  const HandleSortBy = (sorted: TSortedBy) => {
   setSortedBy(() => sorted)
@@ -63,19 +67,19 @@ function App() {
 
   CreateTodo(newTodo)
 
-  setTodoCollection(() => GetAllTodo())
+  SortingLogic()
 
   form.reset()
  }
 
  const HandleUpdateTodo = (todo: TTodo) => {
   EditTodo(todo.id, !todo.complete)
-  setTodoCollection(() => GetAllTodo())
+  SortingLogic()
  }
 
  const HandleDeleteTodo = (id: string) => {
   DeleteTodo(id)
-  setTodoCollection(() => GetAllTodo())
+  SortingLogic()
  }
 
  const SetColorScheme = (scheme: 'white' | 'dark') => {
@@ -103,6 +107,7 @@ function App() {
      <input type="text" name="todo" id="create-todo-input" placeholder='Create a new todo...' />
     </form>
 
+    {/* TODO: Add vertical scroll to see the to-do */}
     <ol id='todo-list'>
      {todoCollection.map((todo, i) => (
       <li className='todo-list-item' key={i}>
