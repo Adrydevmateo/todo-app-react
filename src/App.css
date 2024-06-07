@@ -1,0 +1,155 @@
+header {
+ position: absolute;
+ width: 100%;
+ height: 200px;
+}
+
+header>img {
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ transition: opacity var(--primary-transition);
+}
+
+header>#bg-desktop-light,
+header>#bg-desktop-dark {
+ display: none;
+}
+
+header>#bg-mobile-dark,
+.color-scheme-dark header>#bg-mobile-light {
+ opacity: 0;
+ pointer-events: none;
+}
+
+.color-scheme-dark header>#bg-mobile-dark {
+ opacity: initial;
+ pointer-events: initial;
+}
+
+main {
+ position: relative;
+ max-width: 40em;
+ display: flex;
+ margin: auto;
+ margin-top: 1em;
+ padding: 0 1em;
+ flex-direction: column;
+}
+
+main>.heading-box {
+ position: relative;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+}
+
+main>.heading-box h1 {
+ margin: 0;
+ padding-top: .23em;
+ color: var(--primary-color);
+ letter-spacing: .4em;
+}
+
+main>.heading-box img {
+ position: absolute;
+ cursor: pointer;
+ right: .3em;
+ transition: opacity var(--primary-transition);
+}
+
+#main-form {
+ display: grid;
+ margin-top: 2em;
+}
+
+#main-form input {
+ border: none;
+ outline: 0;
+ padding: 1.6em;
+ border: 1px solid var(--Very-Light-Grayish-Blue);
+ border-radius: var(--border-radius);
+ background-color: var(--Very-Light-Gray);
+}
+
+#icon-sun,
+.color-scheme-dark #icon-moon {
+ opacity: 0;
+ pointer-events: none;
+}
+
+.color-scheme-dark #icon-sun {
+ opacity: initial;
+ pointer-events: initial;
+}
+
+#todo-list {
+ list-style: none;
+ padding: 0;
+ border-radius: var(--border-radius);
+ background-color: var(--Very-Light-Gray);
+ border: 1px solid var(--Very-Light-Grayish-Blue);
+}
+
+.todo-list-item {
+ border-bottom: 2px solid var(--Very-Light-Grayish-Blue);
+ padding: .2em 1em;
+}
+
+.todo-list-footer {
+ display: flex;
+ justify-content: space-between;
+ background-color: var(--Very-Light-Gray);
+ padding: 1.4em 1.4em 1em 1.4em;
+ border-radius: var(--border-radius);
+}
+
+.controllers {
+ margin-top: .4em;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 1.4em;
+ background-color: white;
+ border-radius: var(--border-radius);
+}
+
+.controllers button {
+ padding: 1.4em;
+}
+
+.controllers button:hover {
+ color: var(--Bright-Blue);
+}
+
+@media screen and (min-width: 375px) {
+
+ header {
+  height: 300px;
+ }
+
+ header>#bg-mobile-light,
+ header>#bg-mobile-dark {
+  display: none;
+ }
+
+ header>#bg-desktop-light,
+ header>#bg-desktop-dark {
+  display: initial;
+ }
+
+ header>#bg-desktop-dark,
+ .color-scheme-dark header>#bg-desktop-light {
+  opacity: 0;
+  pointer-events: none;
+ }
+
+ .color-scheme-dark header>#bg-desktop-dark {
+  opacity: initial;
+  pointer-events: initial;
+ }
+
+ main {
+  margin-top: 4em;
+ }
+}

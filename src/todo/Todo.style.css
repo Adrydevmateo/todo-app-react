@@ -1,10 +1,10 @@
 .todo-comp {
- background-color: var(--bg-color);
+ background-color: var(--Very-Light-Gray);
  border-radius: var(--border-radius);
  display: flex;
  align-items: center;
  justify-content: space-between;
- padding: .4em 0;
+ padding: .8em 0;
 }
 
 .todo-comp .col-1,
@@ -18,17 +18,22 @@
 }
 
 .todo-comp .checkbox {
- background-color: red;
  display: grid;
  border-radius: 100%;
+ border: 1px solid transparent;
+ transition: border-color var(--primary-transition-speed) ease;
 }
 
-.todo-comp.complete .checkbox {
- background-color: aquamarine;
+.todo-comp .checkbox:hover {
+ border-color: var(--Bright-Blue);
+}
+
+.todo-comp.complete .checkbox img {
+ background-image: var(--Check-Background);
 }
 
 .todo-comp .checkbox img {
- padding: 1em;
+ padding: .6em;
  border-radius: 100%;
 }
 
@@ -36,6 +41,12 @@
 
 .todo-comp .col-2 button {
  display: grid;
+ padding-right: .2em;
 }
 
 .todo-comp .col-2 button img {}
+
+.todo-comp.complete .txt-container strong {
+ text-decoration: line-through;
+ color: var(--Light-Grayish-Blue);
+}
