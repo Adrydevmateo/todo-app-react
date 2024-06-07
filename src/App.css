@@ -118,7 +118,8 @@ main>.heading-box img {
  padding: 1.4em;
 }
 
-.controllers button:hover {
+.controllers button:hover,
+.controllers button.active {
  color: var(--Bright-Blue);
 }
 

@@ -3,3 +3,5 @@ export type TTodo = {
  txt: string,
  complete: boolean,
 }
+
+export type TSortedBy = 'all' | 'incomplete' | 'complete'

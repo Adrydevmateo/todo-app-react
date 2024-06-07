@@ -11,14 +11,26 @@ import IconMoon from './assets/icons/icon-moon.svg'
 
 import { CreateTodo, DeleteTodo, EditTodo, GetAllTodo } from './todo/Todo'
 import { FormEvent, useEffect, useState } from 'react'
-import { TTodo } from './todo/Todo.types'
+import { TSortedBy, TTodo } from './todo/Todo.types'
 
 function App() {
+ const [sortedBy, setSortedBy] = useState<TSortedBy>('all')
  const [todoCollection, setTodoCollection] = useState<Array<TTodo>>([])
 
  useEffect(() => {
-  setTodoCollection(() => GetAllTodo())
- }, [])
+  const allTodoCollection = GetAllTodo()
+  if (sortedBy === 'all') return setTodoCollection(() => allTodoCollection)
+
+  const incompleteTodoCollection = allTodoCollection.filter(f => f.complete === false)
+  if (sortedBy === 'incomplete') return setTodoCollection(() => incompleteTodoCollection)
+
+  const completeTodoCollection = allTodoCollection.filter(f => f.complete === true)
+  if (sortedBy === 'complete') return setTodoCollection(() => completeTodoCollection)
+ }, [sortedBy])
+
+ const HandleSortBy = (sorted: TSortedBy) => {
+  setSortedBy(() => sorted)
+ }
 
  const HandleFormSubmit = (e: FormEvent) => {
   e.preventDefault()
@@ -88,9 +100,9 @@ function App() {
     </ol>
 
     <div className="controllers">
-     <button type="button"><b>All</b></button>
-     <button type="button"><b>Active</b></button>
-     <button type="button"><b>Completed</b></button>
+     <button className={`${sortedBy === 'all' ? 'active' : ''}`} type="button" onClick={() => HandleSortBy('all')}><b>All</b></button>
+     <button className={`${sortedBy === 'incomplete' ? 'active' : ''}`} type="button" onClick={() => HandleSortBy('incomplete')}><b>Active</b></button>
+     <button className={`${sortedBy === 'complete' ? 'active' : ''}`} type="button" onClick={() => HandleSortBy('complete')}><b>Completed</b></button>
     </div>
    </main>
   </>
