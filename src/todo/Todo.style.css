@@ -28,19 +28,17 @@
  border-color: var(--Bright-Blue);
 }
 
-.todo-comp .checkbox img {
+.todo-comp .checkbox svg {
  opacity: 0;
- padding: .6em;
+ padding: .3em;
  border-radius: 100%;
  transition: opacity var(--primary-transition);
+ color: transparent;
 }
 
-.color-scheme-dark .todo-comp .checkbox img {
- transition: none;
-}
-
-.todo-comp.complete .checkbox img {
+.todo-comp.complete .checkbox svg {
  opacity: 1;
+ color: var(--Light-Grayish-Blue);
  background-image: var(--Check-Background);
 }
 
