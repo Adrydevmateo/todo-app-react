@@ -15,6 +15,12 @@
  color: var(--Very-Light-Gray);
 }
 
+#btn-go-top.show-scroll-btn,
+#btn-go-bottom.show-scroll-btn {
+ opacity: 1;
+ pointer-events: initial;
+}
+
 .color-scheme-dark #btn-go-top svg,
 .color-scheme-dark #btn-go-bottom svg {
  color: var(--Very-Dark-Grayish-Blue);
@@ -127,12 +133,6 @@ main>.heading-box img {
  border: 1px solid var(--Very-Light-Grayish-Blue);
 }
 
-#btn-go-top.show-scroll-btn,
-#btn-go-bottom.show-scroll-btn {
- opacity: 1;
- pointer-events: initial;
-}
-
 .todo-list-item {
  border-bottom: 2px solid var(--Very-Light-Grayish-Blue);
  padding: .2em 1em;
@@ -211,7 +211,24 @@ main>.heading-box img {
  opacity: 1;
 }
 
-@media screen and (min-width: 300px) {}
+#show-whole-list-container {
+ padding: 1em;
+ margin-top: 2em;
+ display: grid;
+ place-content: center;
+}
+
+#show-whole-list-container button {
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+ opacity: .6;
+ transition: opacity var(--primary-transition);
+}
+
+#show-whole-list-container button:hover {
+ opacity: 1;
+}
 
 @media screen and (min-width: 375px) {
 
