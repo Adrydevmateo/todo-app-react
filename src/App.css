@@ -72,6 +72,12 @@ main>.heading-box img {
  background-color: var(--Very-Light-Gray);
 }
 
+.color-scheme-dark #main-form input {
+ color: var(--Light-Grayish-Blue);
+ border-color: var(--Very-Dark-Desaturated-Blue);
+ background-color: var(--Very-Dark-Desaturated-Blue);
+}
+
 #icon-sun,
 .color-scheme-dark #icon-moon {
  opacity: 0;
@@ -96,6 +102,10 @@ main>.heading-box img {
  padding: .2em 1em;
 }
 
+.color-scheme-dark .todo-list-item {
+ border-color: var(--Very-Dark-Grayish-Blue);
+}
+
 .todo-list-footer {
  display: flex;
  justify-content: space-between;
@@ -116,6 +126,12 @@ main>.heading-box img {
  opacity: 1;
 }
 
+.color-scheme-dark #todo-list,
+.color-scheme-dark .todo-list-footer {
+ border-color: var(--Very-Dark-Desaturated-Blue);
+ background-color: var(--Very-Dark-Desaturated-Blue);
+}
+
 .controllers {
  margin-top: .4em;
  display: flex;
@@ -125,6 +141,11 @@ main>.heading-box img {
  gap: 1.4em;
  background-color: white;
  border-radius: var(--border-radius);
+}
+
+.color-scheme-dark .controllers {
+ border-color: var(--Very-Dark-Desaturated-Blue);
+ background-color: var(--Very-Dark-Desaturated-Blue);
 }
 
 .controllers button {

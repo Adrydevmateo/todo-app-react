@@ -1,5 +1,4 @@
 .todo-comp {
- background-color: var(--Very-Light-Gray);
  border-radius: var(--border-radius);
  display: flex;
  align-items: center;
@@ -36,6 +35,10 @@
  transition: opacity var(--primary-transition);
 }
 
+.color-scheme-dark .todo-comp .checkbox img {
+ transition: none;
+}
+
 .todo-comp.complete .checkbox img {
  opacity: 1;
  background-image: var(--Check-Background);
@@ -55,4 +58,12 @@
 .todo-comp.complete .txt-container strong {
  text-decoration: line-through;
  color: var(--Light-Grayish-Blue);
+}
+
+.color-scheme-dark .todo-comp .txt-container strong {
+ color: var(--Light-Grayish-Blue);
+}
+
+.color-scheme-dark .todo-comp.complete .txt-container strong {
+ color: var(--Dark-Grayish-Blue);
 }
