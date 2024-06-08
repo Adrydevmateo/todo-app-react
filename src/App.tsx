@@ -16,8 +16,9 @@ import { TSortedBy, TTodo } from './todo/Todo.types'
 function App() {
  const [sortedBy, setSortedBy] = useState<TSortedBy>('all')
  const [todoCollection, setTodoCollection] = useState<Array<TTodo>>([])
- const [totalTodoMsg, setTotalTodoMsg] = useState('Nothing to do')
  const [showWholeList, setShowWholeList] = useState(false)
+ const [totalTodoMsg, setTotalTodoMsg] = useState('Nothing to do')
+ const [seeMsg, setSeeMsg] = useState('See more')
 
  useEffect(() => {
   SortingLogic()
@@ -94,7 +95,16 @@ function App() {
  }
 
  const ToggleShowWholeList = () => {
-  setShowWholeList(() => !showWholeList)
+  setShowWholeList(() => {
+   const newShowWholeListValue = !showWholeList
+   if (newShowWholeListValue) setSeeMsg(() => 'See Less')
+   else setSeeMsg(() => 'See More')
+   return newShowWholeListValue
+  })
+
+  setTimeout(() => {
+   if (!showWholeList) Scroll({ to: 'bottom' })
+  }, 100);
  }
 
  interface IScroll {
@@ -127,7 +137,6 @@ function App() {
      <input type="text" name="todo" id="create-todo-input" placeholder='Create a new todo...' />
     </form>
 
-    {/* TODO: Add vertical scroll to see the to-do */}
     <ol id='todo-list' className={showWholeList ? 'show-whole-list' : ''}>
      <div id='todo-list-vertical-scroll-container'>
       {todoCollection.map((todo, i) => (
@@ -149,7 +158,7 @@ function App() {
     </div>
 
     <div id='show-whole-list-container' className="show-whole-list">
-     <button type='button' onClick={() => ToggleShowWholeList()}>Show Whole List</button>
+     <button type='button' onClick={() => ToggleShowWholeList()}>{seeMsg}</button>
     </div>
    </main>
    <button type='button' id='btn-go-top' className={showWholeList ? 'show-scroll-btn' : ''} onClick={() => Scroll({ to: 'top' })}>
