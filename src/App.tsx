@@ -17,6 +17,7 @@ function App() {
  const [sortedBy, setSortedBy] = useState<TSortedBy>('all')
  const [todoCollection, setTodoCollection] = useState<Array<TTodo>>([])
  const [totalTodoMsg, setTotalTodoMsg] = useState('Nothing to do')
+ const [showWholeList, setShowWholeList] = useState(false)
 
  useEffect(() => {
   SortingLogic()
@@ -92,6 +93,20 @@ function App() {
   else document.body.classList.add('color-scheme-dark')
  }
 
+ const ToggleShowWholeList = () => {
+  setShowWholeList(() => !showWholeList)
+ }
+
+ interface IScroll {
+  to: 'top' | 'bottom',
+  behavior?: 'auto' | 'instant' | 'smooth'
+ }
+
+ const Scroll = (scroll: IScroll) => {
+  let to = (scroll.to === 'bottom') ? document.body.scrollHeight : 0
+  window.scrollTo({ top: to, behavior: scroll.behavior || 'smooth' })
+ }
+
  return (
   <>
    <header>
@@ -113,12 +128,14 @@ function App() {
     </form>
 
     {/* TODO: Add vertical scroll to see the to-do */}
-    <ol id='todo-list'>
-     {todoCollection.map((todo, i) => (
-      <li className='todo-list-item' key={i}>
-       <TodoComp txt={todo.txt} complete={todo.complete} OnEditTodo={() => HandleUpdateTodo(todo)} OnDeleteTodo={() => HandleDeleteTodo(todo.id)} />
-      </li>
-     ))}
+    <ol id='todo-list' className={showWholeList ? 'show-whole-list' : ''}>
+     <div id='todo-list-vertical-scroll-container'>
+      {todoCollection.map((todo, i) => (
+       <li className='todo-list-item' key={i}>
+        <TodoComp txt={todo.txt} complete={todo.complete} OnEditTodo={() => HandleUpdateTodo(todo)} OnDeleteTodo={() => HandleDeleteTodo(todo.id)} />
+       </li>
+      ))}
+     </div>
      <li className='todo-list-footer'>
       <strong>{totalTodoMsg}</strong>
       <button type='button' onClick={() => HandleClearCompleted()}><b>Clear Completed</b></button>
@@ -130,7 +147,17 @@ function App() {
      <button className={`${sortedBy === 'incomplete' ? 'active' : ''}`} type="button" onClick={() => HandleSortBy('incomplete')}><b>Active</b></button>
      <button className={`${sortedBy === 'complete' ? 'active' : ''}`} type="button" onClick={() => HandleSortBy('complete')}><b>Completed</b></button>
     </div>
+
+    <div id='show-whole-list-container' className="show-whole-list">
+     <button type='button' onClick={() => ToggleShowWholeList()}>Show Whole List</button>
+    </div>
    </main>
+   <button type='button' id='btn-go-top' className={showWholeList ? 'show-scroll-btn' : ''} onClick={() => Scroll({ to: 'top' })}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M11 11.8V15q0 .425.288.713T12 16t.713-.288T13 15v-3.2l.9.9q.275.275.7.275t.7-.275t.275-.7t-.275-.7l-2.6-2.6q-.3-.3-.7-.3t-.7.3l-2.6 2.6q-.275.275-.275.7t.275.7t.7.275t.7-.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22" /></svg>
+   </button>
+   <button type='button' id='btn-go-bottom' className={showWholeList ? 'show-scroll-btn' : ''} onClick={() => Scroll({ to: 'bottom' })}>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="m11 12.2l-.9-.9q-.275-.275-.7-.275t-.7.275t-.275.7t.275.7l2.6 2.6q.3.3.7.3t.7-.3l2.6-2.6q.275-.275.275-.7t-.275-.7t-.7-.275t-.7.275l-.9.9V9q0-.425-.288-.712T12 8t-.712.288T11 9zm1 9.8q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22" /></svg>
+   </button>
   </>
  )
 }

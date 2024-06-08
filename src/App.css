@@ -1,3 +1,33 @@
+#btn-go-top,
+#btn-go-bottom {
+ opacity: 0;
+ pointer-events: none;
+ position: fixed;
+ right: 1em;
+ background-image: var(--Check-Background);
+ display: grid;
+ border-radius: 100%;
+ cursor: pointer;
+}
+
+#btn-go-top svg,
+#btn-go-bottom svg {
+ color: var(--Very-Light-Gray);
+}
+
+.color-scheme-dark #btn-go-top svg,
+.color-scheme-dark #btn-go-bottom svg {
+ color: var(--Very-Dark-Grayish-Blue);
+}
+
+#btn-go-top {
+ bottom: 3.2em;
+}
+
+#btn-go-bottom {
+ bottom: 1em;
+}
+
 header {
  position: absolute;
  width: 100%;
@@ -97,6 +127,12 @@ main>.heading-box img {
  border: 1px solid var(--Very-Light-Grayish-Blue);
 }
 
+#btn-go-top.show-scroll-btn,
+#btn-go-bottom.show-scroll-btn {
+ opacity: 1;
+ pointer-events: initial;
+}
+
 .todo-list-item {
  border-bottom: 2px solid var(--Very-Light-Grayish-Blue);
  padding: .2em 1em;
@@ -130,6 +166,18 @@ main>.heading-box img {
 .color-scheme-dark .todo-list-footer {
  border-color: var(--Very-Dark-Desaturated-Blue);
  background-color: var(--Very-Dark-Desaturated-Blue);
+}
+
+#todo-list-vertical-scroll-container {
+ overflow-y: auto;
+ max-height: 20em;
+ scrollbar-width: none;
+}
+
+.show-whole-list #todo-list-vertical-scroll-container {
+ overflow-y: initial;
+ max-height: initial;
+ scrollbar-width: initial;
 }
 
 .controllers {
