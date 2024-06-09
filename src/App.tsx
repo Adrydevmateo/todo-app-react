@@ -90,8 +90,13 @@ function App() {
  }
 
  const SetColorScheme = (scheme: 'white' | 'dark') => {
-  if (scheme === 'white') document.body.classList.remove('color-scheme-dark')
-  else document.body.classList.add('color-scheme-dark')
+  if (scheme === 'white') {
+   document.body.classList.remove('color-scheme-dark')
+   sessionStorage['color-scheme'] = ''
+  } else {
+   document.body.classList.add('color-scheme-dark')
+   sessionStorage['color-scheme'] = 'color-scheme-dark'
+  }
  }
 
  const ToggleShowWholeList = () => {

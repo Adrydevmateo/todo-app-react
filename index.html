@@ -75,6 +75,9 @@
  </div>
  <div id="root"></div>
  <script>
+  const colorSchemeFromSessionStorage = sessionStorage['color-scheme']
+  if (colorSchemeFromSessionStorage) document.body.classList.add(colorSchemeFromSessionStorage)
+
   setTimeout(() => {
    document.body.classList.add('loaded')
   }, 2000);
