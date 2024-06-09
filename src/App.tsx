@@ -157,13 +157,16 @@ function App() {
      <button className={`${sortedBy === 'complete' ? 'active' : ''}`} type="button" onClick={() => HandleSortBy('complete')}><b>Completed</b></button>
     </div>
 
-    <div id='show-whole-list-container'>
-     <button type='button' onClick={() => ToggleShowWholeList()}>
-      {showWholeList && <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m17 14l-5-5m0 0l-5 5" /></svg>}
-      <b>{seeMsg}</b>
-      {!showWholeList && <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m7 10l5 5m0 0l5-5" /></svg>}
-     </button>
-    </div>
+    {
+     todoCollection.length > 5 &&
+     <div id='show-whole-list-container'>
+      <button type='button' onClick={() => ToggleShowWholeList()}>
+       {showWholeList && <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m17 14l-5-5m0 0l-5 5" /></svg>}
+       <b>{seeMsg}</b>
+       {!showWholeList && <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="m7 10l5 5m0 0l5-5" /></svg>}
+      </button>
+     </div>
+    }
    </main>
    <button type='button' id='btn-go-top' className={showWholeList ? 'show-scroll-btn' : ''} onClick={() => Scroll({ to: 'top' })}>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M11 11.8V15q0 .425.288.713T12 16t.713-.288T13 15v-3.2l.9.9q.275.275.7.275t.7-.275t.275-.7t-.275-.7l-2.6-2.6q-.3-.3-.7-.3t-.7.3l-2.6 2.6q-.275.275-.275.7t.275.7t.7.275t.7-.275zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22" /></svg>
